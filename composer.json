@@ -1,0 +1,16 @@
+{
+    "name": "spagi/universe",
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "require": {
+        "league/csv": "^9.6",
+        "consistence/consistence": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8",
+        "mockery/mockery": "^1.2@dev"
+    }
+}

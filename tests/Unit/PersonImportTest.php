@@ -1,16 +1,25 @@
 <?php declare(strict_types=1);
 
 
+use spagi\universe\Mankind;
+
 final class PersonImportTest extends \PHPUnit\Framework\TestCase
 {
     public function test_import()
     {
-        $mankind = new \spagi\universe\Mankind();
+        $mankind = Mankind::getInstance();
         $importService = new \spagi\universe\PersonImportService($mankind);
         $url = __DIR__ . DIRECTORY_SEPARATOR . 'Resources/data.csv';
         $result = $importService->import($url);
 
         static::assertSame(4, count($result));
+
+        $reflection = new \ReflectionClass($mankind);
+        $instance = $reflection->getProperty('instance');
+        $instance->setAccessible(true); // now we can modify that :)
+        $instance->setValue(null, null); // instance is gone
+        $instance->setAccessible(false); // clean up
+
     }
 
 }

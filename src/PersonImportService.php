@@ -18,7 +18,7 @@ class PersonImportService
     {
         $mankind = Mankind::getInstance();
 
-        $folks = $mankind->getFolksForImport($url);
+        $folks = $this->getFolksForImport($url);
 
         foreach ($folks as $person) {
             $mankind->addPerson($person);
